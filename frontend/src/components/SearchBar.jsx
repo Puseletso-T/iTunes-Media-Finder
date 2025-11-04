@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from "react";// Import React and useState hook
 
+// SearchBar component for searching iTunes media
 function SearchBar({ onSearch }) {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState(""); // Store search term
   const [mediaType, setMediaType] = useState("all");
   const [showDropdown, setShowDropdown] = useState(false);
 
+  // Media type options for dropdown
   const mediaOptions = [
     { value: "all", label: "All" },
     { value: "movie", label: "Movie" },
@@ -16,11 +18,12 @@ function SearchBar({ onSearch }) {
     { value: "ebook", label: "eBook" },
   ];
 
+// Handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent page reload
     if (term.trim()) {
-      onSearch(term, mediaType);
-      setShowDropdown(false);
+      onSearch(term, mediaType); // Trigger search with term and media type
+      setShowDropdown(false); // Close dropdown after search
     }
   };
 
@@ -31,8 +34,9 @@ function SearchBar({ onSearch }) {
     >
       <h4 className="mb-3 text-center text-white">Search iTunes</h4>
 
+       {/* Input, dropdown, and search button section */}
       <div className="d-flex flex-column flex-md-row gap-3 justify-content-center align-items-center">
-        
+        {/* Search input */}
         <input
           type="text"
           className="form-control bg-dark text-light border-light w-100"
@@ -41,7 +45,7 @@ function SearchBar({ onSearch }) {
           onChange={(e) => setTerm(e.target.value)}
         />
 
-        
+         {/* Custom dropdown for selecting media type */}
         <div
           className="custom-dropdown position-relative w-100 w-md-25"
           onMouseLeave={() => setShowDropdown(false)}
@@ -55,7 +59,7 @@ function SearchBar({ onSearch }) {
               "Select Type"}{" "}
             ▼
           </button>
-
+            {/* Dropdown menu items */}
           {showDropdown && (
             <ul className="dropdown-menu-custom">
               {mediaOptions.map((option) => (
@@ -65,8 +69,8 @@ function SearchBar({ onSearch }) {
                     mediaType === option.value ? "active" : ""
                   }`}
                   onClick={() => {
-                    setMediaType(option.value);
-                    setShowDropdown(false);
+                    setMediaType(option.value);// Update selected media type
+                    setShowDropdown(false);// Close dropdown
                   }}
                 >
                   {option.label}
@@ -76,7 +80,7 @@ function SearchBar({ onSearch }) {
           )}
         </div>
 
-        
+        {/* Search button */}
         <button type="submit" className="btn btn-outline-light w-100 w-md-25">
           Search
         </button>
@@ -85,4 +89,4 @@ function SearchBar({ onSearch }) {
   );
 }
 
-export default SearchBar;
+export default SearchBar; // Export SearchBar component

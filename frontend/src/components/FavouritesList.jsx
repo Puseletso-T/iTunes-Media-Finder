@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; // Import react and useState hook
 
+// FavouritesList component to display user's favourite items
 function FavouritesList({ favourites, onRemoveFavourite }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true); // Track collapse/expand state
 
+  
   return (
     <div className="mt-5 fade-in">
-      
+       {/* Header section with title and toggle button */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h4 className="mb-0 text-light">Your Favourites</h4>
         <button
           className="btn btn-outline-light btn-sm"
           type="button"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen(!isOpen)} 
           aria-expanded={isOpen}
         >
           {isOpen ? "Hide" : "Show"}
         </button>
       </div>
-
-      
+  {/* Collapsible favourites section */}
       <div className={`collapse ${isOpen ? "show" : ""}`}>
         {favourites.length === 0 ? (
           <p
@@ -28,6 +29,7 @@ function FavouritesList({ favourites, onRemoveFavourite }) {
             No favourites added yet. Start adding some!
           </p>
         ) : (
+          // Display grid of favourites itmes
           <div className="row g-4">
             {favourites.map((item) => (
               <div
@@ -50,8 +52,10 @@ function FavouritesList({ favourites, onRemoveFavourite }) {
                     >
                       {item.artistName}
                     </p>
+
+                    {/* Remove button with hover styling */}
                     <button
-                      onClick={() => onRemoveFavourite(item)}
+                      onClick={() => onRemoveFavourite(item)} // Remove from favourites
                       className="btn btn-outline-danger btn-sm w-100 mt-2"
                       style={{
                         borderColor: "white",
@@ -78,4 +82,4 @@ function FavouritesList({ favourites, onRemoveFavourite }) {
   );
 }
 
-export default FavouritesList;
+export default FavouritesList; // Export componant for use elswhere

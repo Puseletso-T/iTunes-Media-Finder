@@ -1,5 +1,6 @@
-import React from "react";
+import React from "react";// Import React
 
+// Component to display search results and allow adding favorites
 function ResultsList({ results, onAddFavourite }) {
   if (!results || results.length === 0) {
     return (
@@ -13,6 +14,8 @@ function ResultsList({ results, onAddFavourite }) {
     <div className="mt-5 fade-in">
       <h4 className="mb-4 text-center text-light">Search Results</h4>
       <div className="row g-4">
+       
+        {/* Display grid of result cards */}
         {results.map((item) => (
           <div
             key={item.trackId || item.collectionId}
@@ -42,6 +45,8 @@ function ResultsList({ results, onAddFavourite }) {
                     {new Date(item.releaseDate).toLocaleDateString()}
                   </p>
                 )}
+
+                 {/* Button to add item to favourites */}
                 <button
                   onClick={() => onAddFavourite(item)}
                   className="btn btn-outline-light btn-sm w-100 mt-2"
@@ -57,4 +62,4 @@ function ResultsList({ results, onAddFavourite }) {
   );
 }
 
-export default ResultsList;
+export default ResultsList; // Export ResultsList component

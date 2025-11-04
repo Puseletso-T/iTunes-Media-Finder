@@ -1,14 +1,15 @@
-import React from "react";
+import React from "react"; // Import React
 
+// Header componant with navigation links
 function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
       <div className="container">
         <a className="navbar-brand fw-bold" href="#">
-           iTunes Media Finder
+          iTunes Media Finder
         </a>
 
-         
+        {/* Navbar toggle button for mobile view */}
         <button
           className="navbar-toggler"
           type="button"
@@ -18,12 +19,10 @@ function Header() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-
-
           <span className="navbar-toggler-icon"></span>
         </button>
 
- 
+        {/* Collapsible navigation links */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
@@ -48,4 +47,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header; //Export header component
